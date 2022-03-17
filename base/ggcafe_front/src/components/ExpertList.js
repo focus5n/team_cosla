@@ -6,6 +6,7 @@ import axios from "axios";
 // Components
 import ExpertItem from "./ExpertItem";
 
+// UI CSS
 const ExpertListBlock = styled.div`
   box-sizing: border-box;
   padding-bottom: 3rem;
@@ -19,6 +20,7 @@ const ExpertListBlock = styled.div`
   }
 `;
 
+// API 호출 && API 상태 검증 && 원하는 Data 획득
 const ExpertList = () => {
   const [experts, setExperts] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -41,12 +43,13 @@ const ExpertList = () => {
   }, []);
 
   if (loading) {
-    return <ExpertListBlock>대기 중...</ExpertListBlock>;
+    return <ExpertListBlock>불러오는 중이에요!</ExpertListBlock>;
   }
   if (!experts) {
     return null;
   }
 
+  // API로 호출한 Data를 UI를 활용하여 출력
   return (
     <ExpertListBlock>
       {experts.map((experts) => {

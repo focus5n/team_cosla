@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// UI CSS
 const ExpertItemBlock = styled.div`
   display: flex;
   .thumbnail {
@@ -31,6 +32,7 @@ const ExpertItemBlock = styled.div`
   }
 `;
 
+// UI에 Data 할당
 const ExpertItem = ({ article }) => {
   const { title, description, url, urlToImage } = article;
   return (
