@@ -1,22 +1,26 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const ExpertItemBlock = styled.div`
+const ExpertItemContainer = styled.div`
+  * {
+    margin: 0;
+  }
   display: flex;
   .thumbnail {
     margin-right: 1rem;
     img {
+      margin: 0;
       display: block;
       width: 160px;
       height: 160px;
       object-fit: cover;
+      object-position: 50% 50%;
     }
   }
   .contents {
     h2 {
       margin: 0;
       a {
-        color: black;
+        color: #333;
       }
     }
     p {
@@ -34,21 +38,23 @@ const ExpertItemBlock = styled.div`
 const ExpertItem = ({ article }) => {
   const { title, description, url, urlToImage } = article;
   return (
-    <ExpertItemBlock>
-      <div className="thumbnail">
-        <a href={url} target="_blank" rel="noreferrer">
-          <img src={urlToImage} alt="thumbnail" />
-        </a>
-      </div>
+    <ExpertItemContainer>
+      {urlToImage && (
+        <div className="thumbnail">
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <img src={urlToImage} alt="thumbnail"></img>
+          </a>
+        </div>
+      )}
       <div className="contents">
         <h2>
-          <a href={url} target="_blank" rel="noreferrer">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             {title}
           </a>
         </h2>
         <p>{description}</p>
       </div>
-    </ExpertItemBlock>
+    </ExpertItemContainer>
   );
 };
 

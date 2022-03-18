@@ -1,36 +1,32 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
+import ExpertItem from './ExpertItem';
 
-import ExpertItem from "./components/ExpertItem";
-
-const ExpertListBlock = styled.div`
-  box-sizing: border-box;
-  padding-bottom: 3rem;
-  width: 768px;
-  margin: 0 auto;
-  margin-top: 2rem;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+const ExpertListContainer = styled.div`
+  display: flex;
 `;
 
-const sampleArticle = {
-  title: "제목",
-  description: "내용",
-  url: "http://ggoreb.com",
-  urlToImage: "https://via.placeholder.com/160",
+const sample = {
+  title: '제목',
+  description: '내용',
+  url: 'https://google.com',
+  urlToImage: 'https://via.placeholder.com/160',
 };
 
 const ExpertList = () => {
   return (
-    <ExpertListBlock>
-      <ExpertItem article={sampleArticle} />
-      <ExpertItem article={sampleArticle} />
-      <ExpertItem article={sampleArticle} />
-    </ExpertListBlock>
+    <ExpertListContainer>
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+      <ExpertItem article={sample} />
+    </ExpertListContainer>
   );
 };
 
-export default ExpertItem;
+export default ExpertList;

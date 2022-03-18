@@ -1,4 +1,4 @@
-import ExpertList from "./components/ExpertList";
+import ExpertList from './components/ExpertList';
 
 const App = () => {
   return <ExpertList />;
