@@ -1,3 +1,5 @@
+import React from 'react';
+
 import ExpertList from './components/ExpertList';
 
 const App = () => {

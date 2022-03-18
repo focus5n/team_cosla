@@ -1,9 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const ExpertItemContainer = styled.div`
-  * {
-    margin: 0;
-  }
+// UI CSS
+const ExpertItemBlock = styled.div`
   display: flex;
   .thumbnail {
     margin-right: 1rem;
@@ -13,7 +12,6 @@ const ExpertItemContainer = styled.div`
       width: 160px;
       height: 160px;
       object-fit: cover;
-      object-position: 50% 50%;
     }
   }
   .contents {
@@ -35,10 +33,11 @@ const ExpertItemContainer = styled.div`
   }
 `;
 
+// UI에 Data 할당
 const ExpertItem = ({ article }) => {
   const { title, description, url, urlToImage } = article;
   return (
-    <ExpertItemContainer>
+    <ExpertItemBlock>
       {urlToImage && (
         <div className="thumbnail">
           <a href={url} target="_blank" rel="noopener noreferrer">
@@ -54,7 +53,7 @@ const ExpertItem = ({ article }) => {
         </h2>
         <p>{description}</p>
       </div>
-    </ExpertItemContainer>
+    </ExpertItemBlock>
   );
 };
 
