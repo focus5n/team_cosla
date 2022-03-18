@@ -34,8 +34,8 @@ const ExpertItemBlock = styled.div`
 `;
 
 // UI에 Data 할당
-const ExpertItem = ({ article }) => {
-  const { title, description, url, urlToImage } = article;
+const ExpertsList = ({ detail }) => {
+  const { title: name, description: summary, url, urlToImage } = detail;
   return (
     <ExpertItemBlock>
       {urlToImage && (
@@ -48,13 +48,13 @@ const ExpertItem = ({ article }) => {
       <div className="contents">
         <h2>
           <a href={url} target="_blank" rel="noopener noreferrer">
-            {title}
+            {name}
           </a>
         </h2>
-        <p>{description}</p>
+        <p>{summary}</p>
       </div>
     </ExpertItemBlock>
   );
 };
 
-export default ExpertItem;
+export default ExpertsList;
