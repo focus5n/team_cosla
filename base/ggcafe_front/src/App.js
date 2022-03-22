@@ -9,13 +9,13 @@ import Footer from "./components/Footer";
 // Section Components
 import Home from "./components/Home";
 import Diary from "./components/Diary";
-import MatchingList from "./components/Matching";
+import MatchingList from "./components/MatchingList";
 import Information from "./components/Information";
 
 // CSS
 import "./App.css";
-import SignIn from "./components/signin";
-import SignUp from "./components/signup";
+import SignIn from "./components/Signin";
+import SignUp from "./components/Signup";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
-          <Route path="/matching" element={<MatchingList />}></Route>
+          <Route path="/matchinglist" element={<MatchingList />}></Route>
           <Route path="/information" element={<Information />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
