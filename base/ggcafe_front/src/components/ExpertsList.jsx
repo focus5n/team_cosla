@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // UI CSS
-const ExpertItemBlock = styled.div`
+const MatchingItemBlock = styled.div`
   display: flex;
   .thumbnail {
     margin-right: 1rem;
@@ -34,10 +34,10 @@ const ExpertItemBlock = styled.div`
 `;
 
 // UI에 Data 할당
-const ExpertsList = ({ detail }) => {
+const MatchingList = ({ detail }) => {
   const { title: name, description: summary, url, urlToImage } = detail;
   return (
-    <ExpertItemBlock>
+    <MatchingItemBlock>
       {urlToImage && (
         <div className="thumbnail">
           <a href={url} target="_blank" rel="noopener noreferrer">
@@ -53,8 +53,8 @@ const ExpertsList = ({ detail }) => {
         </h2>
         <p>{summary}</p>
       </div>
-    </ExpertItemBlock>
+    </MatchingItemBlock>
   );
 };
 
-export default ExpertsList;
+export default MatchingList;
