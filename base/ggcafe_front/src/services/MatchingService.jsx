@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 // Components
-import ExpertsList from '../components/ExpertsList';
+import MatchingsList from '../components/MatchingList';
 
 // UI CSS
-const ExpertListBlock = styled.div`
+const MatchingListBlock = styled.div`
   box-sizing: border-box;
   padding-bottom: 3rem;
   width: 768px;
@@ -21,7 +21,7 @@ const ExpertListBlock = styled.div`
 `;
 
 // API 호출 && API 상태 검증 && 원하는 Data 획득
-const ExpertService = () => {
+const MatchingService = () => {
   const [experts, setExperts] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,9 +29,7 @@ const ExpertService = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=9f5baf7d9f3f42879a20d7d19d9886e4',
-        );
+        const response = await axios.get('http://locahlhost:3000');
         setExperts(response.data.articles);
       } catch (e) {
         console.log(e);
@@ -42,7 +40,7 @@ const ExpertService = () => {
   }, []);
 
   if (loading) {
-    return <ExpertListBlock>불러오는 중이에요!</ExpertListBlock>;
+    return <MatchingListBlock>불러오는 중이에요!</MatchingListBlock>;
   }
   if (!experts) {
     return null;
@@ -50,12 +48,12 @@ const ExpertService = () => {
 
   // API로 호출한 Data를 UI를 활용하여 출력
   return (
-    <ExpertListBlock>
+    <MatchingListBlock>
       {experts.map((experts) => {
-        return <ExpertsList key={experts.url} detail={experts} />;
+        return <MatchingsList key={experts.url} detail={experts} />;
       })}
-    </ExpertListBlock>
+    </MatchingListBlock>
   );
 };
 
-export default ExpertService;
+export default MatchingService;

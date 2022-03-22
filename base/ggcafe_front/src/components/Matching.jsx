@@ -1,7 +1,7 @@
 import React from "react";
 
-function Footer(props) {
+function Matching(props) {
   return <div></div>;
 }
 
-export default Footer;
+export default Matching;
