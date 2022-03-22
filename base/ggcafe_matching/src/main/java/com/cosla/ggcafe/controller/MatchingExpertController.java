@@ -2,8 +2,8 @@ package com.cosla.ggcafe.controller;
 
 import java.util.List;
 
-import com.cosla.ggcafe.model.Expert;
-import com.cosla.ggcafe.service.ExpertService;
+import com.cosla.ggcafe.model.MatchingExpert;
+import com.cosla.ggcafe.service.MatchingExpertService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MatchingExpertController {
 
   @Autowired
-  private ExpertService MatchingExpertService;
+  private MatchingExpertService MatchingExpertService;
 
   @GetMapping("/expert")
-  public List<Expert> getAllMatchingExperts() {
+  public List<MatchingExpert> getAllMatchingExpert() {
 
     return MatchingExpertService.getAllMatchingExpert();
 
