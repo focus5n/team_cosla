@@ -120,6 +120,14 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
+              href="https://kauth.kakao.com/oauth/authorize?client_id=db7f399f1838c8f409b9611791d7f87a&redirect_uri=http://localhost:8080/login&response_type=code"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              카카오로 시작하기
+            </Button>
+            <Button
               type="submit"
               fullWidth
               variant="contained"
