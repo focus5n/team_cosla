@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api")
-public class ExpertController {
+public class MatchingExpertController {
 
   @Autowired
-  private ExpertService expertService;
+  private ExpertService MatchingExpertService;
 
   @GetMapping("/expert")
-  public List<Expert> getAllExperts() {
+  public List<Expert> getAllMatchingExperts() {
 
-    return expertService.getAllExpert();
+    return MatchingExpertService.getAllMatchingExpert();
 
   }
 

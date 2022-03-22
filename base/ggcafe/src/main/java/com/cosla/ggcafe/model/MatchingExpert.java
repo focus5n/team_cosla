@@ -12,11 +12,11 @@ import org.hibernate.annotations.DynamicUpdate;
 import lombok.Data;
 
 @Data
-@Table(name = "Expert")
+@Table(name = "MatchingExpert")
 @DynamicInsert
 @DynamicUpdate
 @Entity
-public class Expert {
+public class MatchingExpert {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExpertService {
+public class MatchingExpertService {
 
   @Autowired
-  private ExpertRepository expertRepository;
+  private ExpertRepository MatchingExpertRepository;
 
   // java.util.List
-  public List<Expert> getAllExpert() {
-    return expertRepository.findAll();
+  public List<Expert> getAllMatchingExpert() {
+    return MatchingExpertRepository.findAll();
   }
 
 }
