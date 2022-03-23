@@ -19,7 +19,7 @@ public class MatchingController {
   @Autowired
   private MatchingExpertInfoService MatchingExpertInfoService;
 
-  @GetMapping("/matchingexpert")
+  @GetMapping("/expert")
   public List<MatchingExpertInfo> getAllMatchingExpertInfo() {
 
     return MatchingExpertInfoService.getAllMatchingExpertInfo();

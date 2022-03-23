@@ -29,9 +29,7 @@ const MatchingListService = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/matchingexpert"
-        );
+        const response = await axios.get("http://localhost:8080/api/expert");
         setMatchingExpertInfo(response.data);
       } catch (e) {
         console.log(e);
@@ -52,7 +50,7 @@ const MatchingListService = () => {
   return (
     <MatchingListBlock>
       {matchingExpertInfo.map((expertInfo) => {
-        return <MatchingsList key={expertInfo.id} detail={expertInfo} />;
+        return <MatchingsList key={expertInfo.url} detail={expertInfo} />;
       })}
     </MatchingListBlock>
   );
