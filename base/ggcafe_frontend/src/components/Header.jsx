@@ -11,7 +11,6 @@ const StyledHeader = styled.div`
   a {
     text-decoration: none;
     color: #0c140e;
-    font-family: "Noto Sans CJK KR";
   }
 
   .Header {
@@ -163,7 +162,7 @@ function Header(props) {
             <NavLink to="/diary">공감 일기장</NavLink>
           </li>
           <li>
-            <NavLink to="/matching">전문가 찾기</NavLink>
+            <NavLink to="/matchinglist">전문가 찾기</NavLink>
           </li>
           <li>
             <NavLink to="/column">전문가 칼럼</NavLink>

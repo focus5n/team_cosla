@@ -16,7 +16,7 @@ import lombok.Data;
 @DynamicInsert
 @DynamicUpdate
 @Entity
-public class MatchingExpert {
+public class MatchingExpertInfo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,6 +27,7 @@ public class MatchingExpert {
   private String password;
 
   // 경력정보
+  private String url;
   private String career;
   private String education;
 

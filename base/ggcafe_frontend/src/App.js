@@ -11,7 +11,7 @@ import Home from "./components/Home";
 // 공감 일기장
 import Diary from "./components/Diary";
 // 전문가 찾기
-import MatchingList from "./components/MatchingList";
+import MatchingListService from "./services/MatchingListService";
 // 고객 센터
 import Information from "./components/Information";
 // 로그인
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
-          <Route path="/matchinglist" element={<MatchingList />}></Route>
+          <Route path="/matchinglist" element={<MatchingListService />}></Route>
           <Route path="/information" element={<Information />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>

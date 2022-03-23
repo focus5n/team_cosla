@@ -1,10 +1,10 @@
 // Libraries
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
 // Components
-import MatchingsList from '../components/MatchingList';
+import MatchingsList from "../components/MatchingList";
 
 // UI CSS
 const MatchingListBlock = styled.div`
@@ -21,16 +21,18 @@ const MatchingListBlock = styled.div`
 `;
 
 // API 호출 && API 상태 검증 && 원하는 Data 획득
-const MatchingService = () => {
-  const [experts, setExperts] = useState(null);
+const MatchingListService = () => {
+  const [matchingExpertInfo, setMatchingExpertInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://locahlhost:3000');
-        setExperts(response.data.articles);
+        const response = await axios.get(
+          "http://localhost:8080/api/matchingexpert"
+        );
+        setMatchingExpertInfo(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -42,18 +44,18 @@ const MatchingService = () => {
   if (loading) {
     return <MatchingListBlock>불러오는 중이에요!</MatchingListBlock>;
   }
-  if (!experts) {
+  if (!matchingExpertInfo) {
     return null;
   }
 
   // API로 호출한 Data를 UI를 활용하여 출력
   return (
     <MatchingListBlock>
-      {experts.map((experts) => {
-        return <MatchingsList key={experts.url} detail={experts} />;
+      {matchingExpertInfo.map((expertInfo) => {
+        return <MatchingsList key={expertInfo.id} detail={expertInfo} />;
       })}
     </MatchingListBlock>
   );
 };
 
-export default MatchingService;
+export default MatchingListService;
