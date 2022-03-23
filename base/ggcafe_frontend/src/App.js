@@ -15,9 +15,9 @@ import MatchingList from "./components/MatchingList";
 // 고객 센터
 import Information from "./components/Information";
 // 로그인
-import SignIn from "./components/Signin";
+import SignIn from "./components/SignIn";
 // 회원가입
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 
 // CSS
 import "./App.css";
