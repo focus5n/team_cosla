@@ -42,9 +42,9 @@ const MatchingList = ({ detail }) => {
   return (
     <StyledMatchingList>
       <div className="thumbnail">
-        <a href={url} target="_blank" rel="noopener noreferrer">
+        <NavLink to={url} target="_blank" rel="noopener noreferrer">
           <img src={require("../testImage/1.jpg")} alt="thumbnail" />
-        </a>
+        </NavLink>
       </div>
       <div className="contents">
         <h2>

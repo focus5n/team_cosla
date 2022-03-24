@@ -1,6 +1,9 @@
+// Libraries
 import React, { useEffect, useState } from "react";
-import MatchingDetail from "../components/MatchingDetail";
 import axios from "axios";
+
+// Components
+import MatchingDetail from "../components/MatchingDetail";
 
 const MatchingDetailService = ({ info }) => {
   const [expertInfo, setExpertInfo] = useState(null);
@@ -11,18 +14,12 @@ const MatchingDetailService = ({ info }) => {
       setLoading(true);
       const response = axios.get("http://localhost:8080/api/expert");
       setExpertInfo(response.data);
-      if (response === undefined) {
-        console.log(response.data);
-      } else {
-        const response = axios.get("http://localhost:8080/api/expert");
-        setExpertInfo(response.data);
-      }
       setLoading(false);
     };
     fetchData();
   }, []);
 
-  // Loading 중일 때, 화면에 출력
+  // Loading 중일 때, 출력하는 화면
   if (loading) {
     return <h2>불러오는 중이에요!</h2>;
   }
@@ -32,7 +29,6 @@ const MatchingDetailService = ({ info }) => {
 
   return (
     <div>
-      {console.log("가나다라")}
       {expertInfo.map((expertInfo) => {
         return <MatchingDetail key={expertInfo.url} info={expertInfo} />;
       })}
