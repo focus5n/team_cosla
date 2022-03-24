@@ -49,6 +49,7 @@ const MatchingListService = () => {
   // API로 호출한 Data를 UI를 활용하여 출력
   return (
     <MatchingListBlock>
+      {console.log(matchingExpertInfo)}
       {matchingExpertInfo.map((expertInfo) => {
         return <MatchingsList key={expertInfo.url} detail={expertInfo} />;
       })}

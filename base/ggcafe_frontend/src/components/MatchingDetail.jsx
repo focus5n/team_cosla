@@ -7,12 +7,14 @@ import React from "react";
 //   }
 // `;
 
-function MatchingDetail(props) {
+const MatchingDetail = ({ info }) => {
+  const { summary: title, description, url, urlToImage } = info;
+
   return (
     <MatchingDetail>
       <div className="Container">
         <div className="expert">
-          <div className="name">dd</div>
+          <div className="name">{title}</div>
           <div className="image"></div>
         </div>
         <div className="personal">
@@ -33,6 +35,6 @@ function MatchingDetail(props) {
       </div>
     </MatchingDetail>
   );
-}
+};
 
 export default MatchingDetail;

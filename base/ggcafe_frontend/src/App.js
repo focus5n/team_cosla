@@ -35,10 +35,8 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />}></Route>
           <Route path="/diary" element={<Diary />}></Route>
-          <Route path="/matchinglist" element={<MatchingListService />}>
-            {/* TODO. path={id} */}
-            <Route path="1" element={<MatchingDetail />}></Route>
-          </Route>
+          <Route path="/matchinglist" element={<MatchingListService />}></Route>
+          <Route path="/matchinglist123" element={<MatchingDetail />} />
           <Route path="/column" element={<Column />}></Route>
           <Route path="/counselling" element={<Counselling />}></Route>
           <Route path="/information" element={<Information />}></Route>
