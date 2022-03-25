@@ -168,6 +168,9 @@ function Header(props) {
             <NavLink to="/matchinglist/:id">전문가 상세정보</NavLink>
           </li>
           <li>
+            <NavLink to="/schedule">상담 일정 정하기</NavLink>
+          </li>
+          <li>
             <NavLink to="/column">전문가 칼럼</NavLink>
           </li>
           <li>

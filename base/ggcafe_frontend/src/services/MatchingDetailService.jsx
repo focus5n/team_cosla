@@ -29,8 +29,9 @@ const MatchingDetailService = ({ info }) => {
 
   return (
     <div>
-      {expertInfo.map((expertInfo) => {
-        return <MatchingDetail key={expertInfo.url} info={expertInfo} />;
+      {console.log(expertInfo)}
+      {expertInfo.map((Info) => {
+        return <MatchingDetail key={Info.id} info={Info} />;
       })}
     </div>
   );

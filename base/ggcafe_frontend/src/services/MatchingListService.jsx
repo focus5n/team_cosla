@@ -51,7 +51,7 @@ const MatchingListService = () => {
     <MatchingListBlock>
       {console.log(matchingExpertInfo)}
       {matchingExpertInfo.map((expertInfo) => {
-        return <MatchingsList key={expertInfo.url} detail={expertInfo} />;
+        return <MatchingsList key={expertInfo.id} detail={expertInfo} />;
       })}
     </MatchingListBlock>
   );

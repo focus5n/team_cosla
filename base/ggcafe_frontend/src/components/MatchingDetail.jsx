@@ -115,11 +115,7 @@ const MatchingDetail = ({ info }) => {
     <StyledDetail>
       <div className="container1">
         <div className="expert">
-          <img
-            className="image"
-            src={require({ urlToImage })}
-            alt="thumbnail"
-          />
+          <img className="image" src={urlToImage} alt="thumbnail" />
           <div className="name">{name}</div>
         </div>
         <div className="personal">

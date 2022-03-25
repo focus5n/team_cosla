@@ -44,7 +44,7 @@ const MatchingList = ({ detail }) => {
     <StyledMatchingList>
       <div className="thumbnail">
         <NavLink to={url} target="_blank" rel="noopener noreferrer">
-          <img src={require({ urlToImage })} alt="thumbnail" />
+          <img src={urlToImage} alt="thumbnail" />
         </NavLink>
       </div>
       <div className="contents">
