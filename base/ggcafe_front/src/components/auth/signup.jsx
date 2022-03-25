@@ -31,9 +31,28 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    primary: {
+      main: '#0971f1',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
+  },
+
+});
 
 export default function SignUp() {
+  const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
+  const REDIRECT_URI = "http://localhost:3000/callback/kakao";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -68,25 +87,15 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="Name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="Name"
+                  label="Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -120,7 +129,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
-              href="https://kauth.kakao.com/oauth/authorize?client_id=db7f399f1838c8f409b9611791d7f87a&redirect_uri=http://localhost:8080/login&response_type=code"
+              href={KAKAO_AUTH_URL}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -137,7 +146,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signin" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

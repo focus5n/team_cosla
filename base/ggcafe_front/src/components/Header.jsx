@@ -1,5 +1,6 @@
 // Libraries
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,6 +30,9 @@ const StyledHeader = styled.div`
   }
 `;
 function Header(props) {
+  let email;
+  
+
   return (
     <StyledHeader>
       <div className="Header">
@@ -57,6 +61,12 @@ function Header(props) {
           <li>
             <NavLink to="/information">고객센터</NavLink>
           </li>
+          <li>
+            <NavLink to="/signup">지금 즉시 회원 가입</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signin">로그인</NavLink>
+          </li>
         </ul>
 
         {/* Navigation Icons */}
@@ -64,7 +74,11 @@ function Header(props) {
           <NavLink to="/memberinfo">
             <i className="fa-solid fa-address-card"></i>
           </NavLink>
-          <NavLink to="/signout">
+          <NavLink to="/SignOut">
+            {(window.sessionStorage.getItem("name") === null)
+            ? <div>로그인 하세요!</div>
+            : <div>{ window.sessionStorage.getItem("name") + "님 환영합니다."}</div>
+            }
             <i className="fa-solid fa-right-from-bracket"></i>
           </NavLink>
         </div>

@@ -14,8 +14,12 @@ import Information from "./components/Information";
 
 // CSS
 import "./App.css";
-import SignIn from "./components/signin";
-import SignUp from "./components/signup";
+
+// Auth
+import SignIn from "./components/auth/signin";
+import SignUp from "./components/auth/signup";
+import Login from "./components/auth/Login";
+import SignOut from "./components/auth/SignOut";
 
 function App() {
   return (
@@ -29,6 +33,8 @@ function App() {
           <Route path="/information" element={<Information />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/SignOut" element={<SignOut />}></Route>
+          <Route path="/callback/kakao" element={<Login/>}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

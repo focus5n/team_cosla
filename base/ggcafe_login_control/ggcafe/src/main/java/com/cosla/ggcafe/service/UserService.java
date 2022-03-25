@@ -35,7 +35,7 @@ public class UserService {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","db7f399f1838c8f409b9611791d7f87a");
-        params.add("redirect_uri","http://localhost:3000/");
+        params.add("redirect_uri","http://localhost:3000/callback/kakao");
         params.add("code", code);
         params.add("client_secret", "uRI2TMi5X0vi7a2fTNLoRpWTWAJu1g9l");
       
@@ -98,14 +98,19 @@ public class UserService {
             e.printStackTrace();
         }
 
-        User user = new User();
-        user.setName(profile.getProperties().getNickname());
-        user.setEmail(profile.getKakao_account().getEmail());
-        //test 용도로 gender만 요청
-        //원래라면 agree 했는지 null이 아닌지 체크해야하지만 그냥 가져옴
-        user.setGender(profile.getKakao_account().getGender());
-        user.setAge_range(profile.getKakao_account().getAge_range());
-        userRepository.save(user);
+        String kakaoEmail = profile.getKakao_account().getEmail();
+        if(userRepository.existsByEmail(kakaoEmail) == true){
+            return profile;
+        }
+        else {
+            User user = new User();
+            user.setName(profile.getProperties().getNickname());
+            user.setEmail(profile.getKakao_account().getEmail());
+            //원래라면 agree 했는지 null이 아닌지 체크해야하지만 그냥 가져옴
+            user.setGender(profile.getKakao_account().getGender());
+            user.setAge_range(profile.getKakao_account().getAge_range());
+            userRepository.save(user);
+        }
 
         return profile;
 

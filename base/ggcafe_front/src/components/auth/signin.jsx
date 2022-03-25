@@ -12,9 +12,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import KakaoLogin from '../../img/kakao_login_medium_wide.png';
 
 function Copyright(props) {
   return (
+
     <Typography
       variant="body2"
       color="text.secondary"
@@ -31,9 +33,24 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { size: "kakaosize" },
+          style: { fontSize: 12, padding: "11px 128px" }
+        }
+      ]
+    }
+  }
+}); 
 
 export default function SignIn() {
+  const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
+  const REDIRECT_URI = "http://localhost:3000/callback/kakao";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -42,8 +59,9 @@ export default function SignIn() {
       password: data.get("password"),
     });
   };
-
+  
   return (
+    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -58,7 +76,7 @@ export default function SignIn() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h2" variant="h5">
             Sign in
           </Typography>
           <Box
@@ -91,11 +109,12 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+            <div><a href={KAKAO_AUTH_URL}><img  src={KakaoLogin}></img></a></div>
+            <Button 
               type="submit"
-              fullWidth
+              size="kakaosize"
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 0, mb: 3 }}
             >
               Sign In
             </Button>
@@ -106,7 +125,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
