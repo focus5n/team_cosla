@@ -26,7 +26,7 @@ public class UserController {
         UserService userService = new UserService();
         OAuthToken oAuthToken = new OAuthToken();
         oAuthToken = userService.getAccessToken(code);
-        //userService.getProfile(oAuthToken, userRepository);
+        // userService.getProfile(oAuthToken, userRepository);
         return oAuthToken;
     }
 
@@ -46,5 +46,5 @@ public class UserController {
         userRepository.save(user);
         return user;
     }
-    
+
 }
