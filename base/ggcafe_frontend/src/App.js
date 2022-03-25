@@ -14,7 +14,7 @@ import Diary from "./components/Diary";
 // 전문가 목록
 import MatchingListService from "./services/MatchingListService";
 // 전문가 상세정보
-import MatchingDetailService from "./services/MatchingDetailService";
+// import MatchingDetailService from "./services/MatchingDetailService";
 import MatchingDetail from "./components/MatchingDetail";
 // 일정 선택
 import Calendar from "./components/Calendar";
@@ -44,7 +44,7 @@ function App() {
           {/* 전문가의 id를 주소값으로 설정하는 방법을 모르겠음 */}
           <Route path="/matchingdetail" element={<MatchingDetail />} />
           <Route path="/schedule" element={<Calendar />} />
-          <Route path="/column" element={<Column />}></Route>
+          <Route path="/column" element={<Column />} />
           <Route path="/counselling" element={<Counselling />} />
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
