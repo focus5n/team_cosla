@@ -14,6 +14,40 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Copyright(props) {
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = usestate("");
+
+  const nameHandler = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+
+  const emailHandler = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    e.preventDefault();
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // state에 저장한 값을 가져옵니다.
+    console.log(Email);
+    console.log(Password);
+
+    let body = {
+      email: Email,
+      password: Password,
+    };
+    axios
+    .post("/signin", body)
+    .then((res) => console.log(res));
+  };
+
   return (
     <Typography
       variant="body2"
