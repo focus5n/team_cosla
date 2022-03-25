@@ -41,7 +41,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/matchinglist" element={<MatchingListService />} />
-          {/* 전문가의 id를 주소값으로 설정하는 방법을 모르겠음 */}
           <Route path="/matchingdetail" element={<MatchingDetail />} />
           <Route path="/schedule" element={<Calendar />} />
           <Route path="/column" element={<Column />} />
