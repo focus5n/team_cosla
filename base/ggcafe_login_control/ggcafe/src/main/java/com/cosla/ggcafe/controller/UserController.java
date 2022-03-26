@@ -65,4 +65,11 @@ public class UserController {
         }
         return user2;
     }
+
+    @GetMapping("/accountinfo/update/{id}")
+    @ResponseBody
+    public String accountUpdate(@RequestParam("at") String at) {
+        
+        return "";
+    }
 }
