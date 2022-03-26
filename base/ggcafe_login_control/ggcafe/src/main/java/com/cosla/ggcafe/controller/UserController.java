@@ -51,7 +51,6 @@ public class UserController {
     }
 
     //로그인
-
     @PostMapping("/signin")
     @ResponseBody
     public User signInPost(@ModelAttribute User user) {
