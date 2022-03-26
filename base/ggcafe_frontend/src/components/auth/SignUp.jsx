@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControl from '@mui/material/FormControl';
+import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -14,11 +14,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
-
   return (
     <Typography
       variant="body2"
@@ -70,19 +68,20 @@ const SignUp = () => {
     const postData = { name, email, password };
     console.log(postData);
     await axios
-      .post('/signup', null, { params:
-        {name: postData.name,
+      .post("/signup", null, {
+        params: {
+          name: postData.name,
           email: postData.email,
-        password: postData.password,
-        }})
+          password: postData.password,
+        },
+      })
       .then(function (response) {
-        
-        console.log(response, '성공');
-        navigate('/');
+        console.log(response, "성공");
+        navigate("/");
       })
       .catch(function (err) {
         console.log(err);
-        setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
+        setRegisterError("회원가입에 실패하였습니다. 다시한번 확인해 주세요.");
       });
   };
 
@@ -104,17 +103,6 @@ const SignUp = () => {
     console.log(joinData);
     onhandlePost(joinData);
   };
-  /*
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-  */
 
   return (
     <ThemeProvider theme={theme}>
@@ -175,13 +163,15 @@ const SignUp = () => {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                <FormControlLabel
-                    control={<Checkbox onChange={handleAgree} color="primary" />}
+                  <FormControlLabel
+                    control={
+                      <Checkbox onChange={handleAgree} color="primary" />
+                    }
                     label="회원가입 약관에 동의합니다."
                   />
                 </Grid>
               </Grid>
-              
+
               <Button
                 type="submit"
                 fullWidth
@@ -192,13 +182,13 @@ const SignUp = () => {
               </Button>
             </FormControl>
             <Button
-                href={KAKAO_AUTH_URL}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                카카오로 시작하기
-              </Button>
+              href={KAKAO_AUTH_URL}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              카카오로 시작하기
+            </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signin" variant="body2">
@@ -206,7 +196,6 @@ const SignUp = () => {
                 </Link>
               </Grid>
             </Grid>
-
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
