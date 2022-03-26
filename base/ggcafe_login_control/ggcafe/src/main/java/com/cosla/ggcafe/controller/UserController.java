@@ -1,5 +1,8 @@
 package com.cosla.ggcafe.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.cosla.ggcafe.model.KakaoProfile;
 import com.cosla.ggcafe.model.OAuthToken;
 import com.cosla.ggcafe.model.User;
@@ -26,7 +29,7 @@ public class UserController {
         UserService userService = new UserService();
         OAuthToken oAuthToken = new OAuthToken();
         oAuthToken = userService.getAccessToken(code);
-        //userService.getProfile(oAuthToken, userRepository);
+        // userService.getProfile(oAuthToken, userRepository);
         return oAuthToken;
     }
 
@@ -46,5 +49,21 @@ public class UserController {
         userRepository.save(user);
         return user;
     }
-    
+
+    //로그인
+
+    @PostMapping("/signin")
+    @ResponseBody
+    public User signInPost(@ModelAttribute User user) {
+        User user2 = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        Map<String, Object> map = new HashMap<>();
+        if (user2 != null) {
+          map.put("code", 200);
+          map.put("msg", "success");
+        } else {
+          map.put("code", 201);
+          map.put("msg", "fail");
+        }
+        return user2;
+    }
 }

@@ -31,6 +31,7 @@ function App() {
           <Route path="/diary" element={<Diary />}></Route>
           <Route path="/matching" element={<Matching />}></Route>
           <Route path="/information" element={<Information />}></Route>
+          {/*  */}
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/SignOut" element={<SignOut />}></Route>

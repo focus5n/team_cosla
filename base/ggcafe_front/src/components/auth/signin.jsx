@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import KakaoLogin from '../../img/kakao_login_medium_wide.png';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Copyright(props) {
   return (
@@ -50,14 +52,49 @@ export default function SignIn() {
   const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
   const REDIRECT_URI = "http://localhost:3000/callback/kakao";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const onhandlePost2 = async (data) => {
+    const { email, password } = data;
+    const postData = { email, password };
+    console.log(postData);
+    await axios
+      .post('/signin', null, { params:
+        {name: postData.name,
+          email: postData.email,
+        password: postData.password,
+        }})
+      .then(function (response) {
+        let name, email;
+        name = response.data.name;
+        email = response.data.email;
+        window.sessionStorage.setItem("name", name);
+        window.sessionStorage.setItem("email", email);
+        console.log(response, '성공');
+        window.location = '/';
+        navigate('/');
+        
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
+
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+     const joinData = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    const { email, name, password } = joinData;
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+    console.log(joinData);
+    onhandlePost2(joinData);
   };
   
   return (
@@ -81,7 +118,7 @@ export default function SignIn() {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit2}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -90,7 +127,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -109,7 +146,7 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <div><a href={KAKAO_AUTH_URL}><img  src={KakaoLogin}></img></a></div>
+            <div><a href={KAKAO_AUTH_URL}><img src={KakaoLogin}></img></a></div>
             <Button 
               type="submit"
               size="kakaosize"

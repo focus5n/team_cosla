@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import FormControl from '@mui/material/FormControl';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -12,41 +13,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 function Copyright(props) {
-  const [Name, setName] = useState("");
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = usestate("");
-
-  const nameHandler = (e) => {
-    e.preventDefault();
-    setName(e.target.value);
-  };
-
-  const emailHandler = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-
-  const passwordHandler = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    // state에 저장한 값을 가져옵니다.
-    console.log(Email);
-    console.log(Password);
-
-    let body = {
-      email: Email,
-      password: Password,
-    };
-    axios
-    .post("/signin", body)
-    .then((res) => console.log(res));
-  };
 
   return (
     <Typography
@@ -82,19 +53,69 @@ const theme = createTheme({
 
 });
 
-export default function SignUp() {
+const signup = () => {
+  const [checked, setChecked] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  const navigate = useNavigate();
+
   const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
   const REDIRECT_URI = "http://localhost:3000/callback/kakao";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  
+
+  const handleAgree = (event) => {
+    setChecked(event.target.checked);
+  };
+
+  const onhandlePost = async (data) => {
+    const { name, email, password } = data;
+    const postData = { name, email, password };
+    console.log(postData);
+    await axios
+      .post('/signup', null, { params:
+        {name: postData.name,
+          email: postData.email,
+        password: postData.password,
+        }})
+      .then(function (response) {
+        
+        console.log(response, '성공');
+        navigate('/');
+      })
+      .catch(function (err) {
+        console.log(err);
+        setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요.');
+      });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.currentTarget);
+    const joinData = {
+      name: data.get("name"),
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    const { email, name, password } = joinData;
+    console.log({
+      name: data.get("name"),
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+    console.log(joinData);
+    onhandlePost(joinData);
+  };
+  /*
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      name: data.get("name"),
       email: data.get("email"),
       password: data.get("password"),
     });
   };
+  */
 
   return (
     <ThemeProvider theme={theme}>
@@ -120,64 +141,65 @@ export default function SignUp() {
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="Name"
-                  required
-                  fullWidth
-                  id="Name"
-                  label="Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
+            <FormControl component="fieldset" variant="standard">
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="name"
+                    required
+                    fullWidth
+                    id="name"
+                    label="Name"
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
                 <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
+                    control={<Checkbox onChange={handleAgree} color="primary" />}
+                    label="회원가입 약관에 동의합니다."
+                  />
+                </Grid>
               </Grid>
-            </Grid>
+              
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+            </FormControl>
             <Button
-              href={KAKAO_AUTH_URL}
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              카카오로 시작하기
-            </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
+                href={KAKAO_AUTH_URL}
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                카카오로 시작하기
+              </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/signin" variant="body2">
@@ -185,10 +207,13 @@ export default function SignUp() {
                 </Link>
               </Grid>
             </Grid>
+
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default signup;
