@@ -28,6 +28,8 @@ import Information from "./components/information/Information";
 import SignIn from "./components/auth/SignIn";
 // 회원가입
 import SignUp from "./components/auth/SignUp";
+// 로그인 콜백
+import Login from "./components/auth/Login"
 
 // CSS
 import "./App.css";
@@ -48,6 +50,7 @@ function App() {
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/callback/kakao" element={<Login/>}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

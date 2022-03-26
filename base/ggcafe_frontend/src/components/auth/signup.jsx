@@ -52,7 +52,7 @@ const theme = createTheme({
   },
 });
 
-const signup = () => {
+const SignUp = () => {
   const [checked, setChecked] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
@@ -215,4 +215,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default SignUp;
