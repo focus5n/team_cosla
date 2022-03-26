@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 // Components
-import MatchingsList from "../components/MatchingList";
+import MatchingsList from "../../components/matching/MatchingList";
 
 // UI CSS
 const MatchingListBlock = styled.div`

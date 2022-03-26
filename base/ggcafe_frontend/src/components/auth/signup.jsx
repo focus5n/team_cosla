@@ -12,11 +12,13 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
+import axios from "axios";
 
 function Copyright(props) {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
-  const [Password, setPassword] = usestate("");
+  const [Password, setPassword] = useState("");
 
   const nameHandler = (e) => {
     e.preventDefault();
@@ -43,9 +45,7 @@ function Copyright(props) {
       email: Email,
       password: Password,
     };
-    axios
-    .post("/signin", body)
-    .then((res) => console.log(res));
+    axios.post("/signin", body).then((res) => console.log(res));
   };
 
   return (
@@ -67,26 +67,25 @@ function Copyright(props) {
 
 const theme = createTheme({
   status: {
-    danger: '#e53e3e',
+    danger: "#e53e3e",
   },
   palette: {
     primary: {
-      main: '#0971f1',
-      darker: '#053e85',
+      main: "#0971f1",
+      darker: "#053e85",
     },
     neutral: {
-      main: '#64748B',
-      contrastText: '#fff',
+      main: "#64748B",
+      contrastText: "#fff",
     },
   },
-
 });
 
 export default function SignUp() {
   const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
   const REDIRECT_URI = "http://localhost:3000/callback/kakao";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

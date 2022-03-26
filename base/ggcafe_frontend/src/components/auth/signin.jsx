@@ -12,11 +12,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import KakaoLogin from '../../img/kakao_login_medium_wide.png';
+import KakaoLogin from "../../image/kakao_login_medium_wide.png";
 
 function Copyright(props) {
   return (
-
     <Typography
       variant="body2"
       color="text.secondary"
@@ -39,12 +38,12 @@ const theme = createTheme({
       variants: [
         {
           props: { size: "kakaosize" },
-          style: { fontSize: 12, padding: "11px 128px" }
-        }
-      ]
-    }
-  }
-}); 
+          style: { fontSize: 12, padding: "11px 128px" },
+        },
+      ],
+    },
+  },
+});
 
 export default function SignIn() {
   const REST_API_KEY = "29c78343b370300dd32d1c5db788b753";
@@ -59,9 +58,8 @@ export default function SignIn() {
       password: data.get("password"),
     });
   };
-  
+
   return (
-    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -109,8 +107,12 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <div><a href={KAKAO_AUTH_URL}><img  src={KakaoLogin}></img></a></div>
-            <Button 
+            <div>
+              <a href={KAKAO_AUTH_URL}>
+                <img src={KakaoLogin}></img>
+              </a>
+            </div>
+            <Button
               type="submit"
               size="kakaosize"
               variant="contained"
