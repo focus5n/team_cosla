@@ -52,7 +52,7 @@ function App() {
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/SignOut" element={<SignOut />} />
+          <Route path="/signout" element={<SignOut />} />
           <Route path="/callback/kakao" element={<Login/>}></Route>
         </Routes>
         <Footer />
