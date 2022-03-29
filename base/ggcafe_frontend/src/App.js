@@ -30,7 +30,8 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 // 로그인 콜백
 import Login from "./components/auth/Login"
-
+// 로그아웃
+import SignOut from "./components/auth/SignOut";
 
 // CSS
 import "./App.css";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/SignOut" element={<SignOut />} />
           <Route path="/callback/kakao" element={<Login/>}></Route>
         </Routes>
         <Footer />
