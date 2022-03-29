@@ -88,6 +88,8 @@ const StyledDetail = styled.div`
 
 function MatchingDetail(info) {
   const {
+    // eslint-disable-next-line no-unused-vars
+    id,
     name,
     urlToImage,
     summary: title,

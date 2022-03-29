@@ -14,8 +14,7 @@ import Diary from "./components/diary/Diary";
 // 전문가 목록
 import MatchingListService from "./services/matchingService/MatchingListService";
 // 전문가 상세정보
-// import MatchingDetailService from "./services/MatchingDetailService";
-import MatchingDetail from "./components/matching/MatchingDetail";
+import MatchingDetailService from "./services/matchingService/MatchingDetailService";
 // 일정 선택
 import Calendar from "./components/matching/Calendar";
 // 전문가 칼럼
@@ -43,7 +42,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/matchinglist" element={<MatchingListService />} />
-          <Route path="/matchingdetail" element={<MatchingDetail />} />
+          <Route
+            path="/matchingdetail/:id"
+            element={<MatchingDetailService />}
+          />
           <Route path="/schedule" element={<Calendar />} />
           <Route path="/column" element={<Column />} />
           <Route path="/counselling" element={<Counselling />} />
