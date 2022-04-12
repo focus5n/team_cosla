@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import ExpertDetail from "../../components/matching/ExpertDetail";
+import ExpertDetail from "../../components/expert/ExpertDetail";
 
 const ExpertDetailService = () => {
   const [data, setData] = useState(null);
@@ -18,7 +19,7 @@ const ExpertDetailService = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <h1>불러오는 중이에요!</h1>;

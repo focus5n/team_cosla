@@ -12,9 +12,9 @@ import Home from "./components/home/Home";
 // 공감 일기장
 import Diary from "./components/diary/Diary";
 // 전문가 목록
-import ExpertListService from "./services/matchingService/ExpertListService";
+import ExpertListService from "./services/expertService/ExpertListService";
 // 전문가 상세정보
-import ExpertDetailService from "./services/matchingService/ExpertDetailService";
+import ExpertDetailService from "./services/expertService/ExpertDetailService";
 // 전문가 칼럼
 import Column from "./components/column/Column";
 // 상담 받기
@@ -40,7 +40,7 @@ function App() {
           <Route index path="" element={<Home />} />
           <Route path="diary" element={<Diary />} />
           <Route path="column" element={<Column />} />
-          <Route path="matching" element={<ExpertListService />} />
+          <Route path="expert" element={<ExpertListService />} />
           <Route path="detail/:id" element={<ExpertDetailService />} />
           <Route path="counselling" element={<Counselling />} />
           <Route path="information" element={<Information />} />

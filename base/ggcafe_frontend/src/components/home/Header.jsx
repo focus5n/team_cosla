@@ -162,7 +162,7 @@ function Header(props) {
             <NavLink to="/diary">공감 일기장</NavLink>
           </li>
           <li>
-            <NavLink to="/matching">전문가 찾기</NavLink>
+            <NavLink to="/expert">전문가 찾기</NavLink>
           </li>
           <li>
             <NavLink to="/column">전문가 칼럼</NavLink>

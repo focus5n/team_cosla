@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ExpertList from "../../components/matching/ExpertList";
+import ExpertList from "../../components/expert/ExpertList";
 
 const ExpertListService = () => {
   const [data, setData] = useState(null);
