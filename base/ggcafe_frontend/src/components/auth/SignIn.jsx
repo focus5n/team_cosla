@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -12,7 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import KakaoLogin from "../../image/kakao_login_medium_wide.png";
+import KakaoLogin from "../../images/kakao_login_medium_wide.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -58,21 +59,22 @@ export default function SignIn() {
     const postData = { email, password };
     console.log(postData);
     await axios
-      .post('/signin', null, { params:
-        {name: postData.name,
+      .post("/signin", null, {
+        params: {
+          name: postData.name,
           email: postData.email,
-        password: postData.password,
-        }})
+          password: postData.password,
+        },
+      })
       .then(function (response) {
         let name, email;
         name = response.data.name;
         email = response.data.email;
         window.sessionStorage.setItem("name", name);
         window.sessionStorage.setItem("email", email);
-        console.log(response, '성공');
-        window.location = '/';
-        navigate('/');
-        
+        console.log(response, "성공");
+        window.location = "/";
+        navigate("/");
       })
       .catch(function (err) {
         console.log(err);
@@ -83,7 +85,7 @@ export default function SignIn() {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
-     const joinData = {
+    const joinData = {
       email: data.get("email"),
       password: data.get("password"),
     };
@@ -144,8 +146,12 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <div><a href={KAKAO_AUTH_URL}><img src={KakaoLogin}></img></a></div>
-            <Button 
+            <div>
+              <a href={KAKAO_AUTH_URL}>
+                <img src={KakaoLogin} alt="KakaoLogin"></img>
+              </a>
+            </div>
+            <Button
               type="submit"
               size="kakaosize"
               variant="contained"
