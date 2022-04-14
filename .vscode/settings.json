@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["Cosla", "Ggcafe", "matchingdetail", "memberinfo", "signup"]
+  "cSpell.words": [
+    "Cosla",
+    "Ggcafe",
+    "matchingdetail",
+    "memberinfo",
+    "signup"
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

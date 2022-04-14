@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="diaryBoard : ${list}" th:attr="id=${diaryBoard.id}">
+                    <td th:text="${diaryBoard.id}"></td>
+                    <td th:text="${diaryBoard.title}"></td>
+                    <td th:text="${diaryBoard.userId}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-block" id="write-btn">글쓰기
+        </button>
+    </div>
+</div>
+<script>
+    document.querySelector('#write-btn').addEventListener('click', () => {
+        location = '/board/write';
+    });
+</script>

@@ -3,7 +3,7 @@ import React from "react";
 function Diary(props) {
   return (
     <div>
-      <h2>일기장임</h2>
+      <h2>공감일기장</h2>
     </div>
   );
 }
