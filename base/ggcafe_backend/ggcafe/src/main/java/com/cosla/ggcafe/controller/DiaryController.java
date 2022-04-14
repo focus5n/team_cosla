@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.cosla.ggcafe.model.DiaryBoard;
 import com.cosla.ggcafe.repository.DiaryBoardRepository;
 
-..
+
 @Controller
 public class DiaryController {
     
