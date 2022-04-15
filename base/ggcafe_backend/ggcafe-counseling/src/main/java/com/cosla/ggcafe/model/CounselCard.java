@@ -13,8 +13,8 @@ import lombok.Data;
 public class CounselCard {
     @Id @GeneratedValue
     Long id;
-    String counseler;
-    int counselrId;
+    String counselor;
+    int counselorId;
     String counselee;
     int counseleeId;
     String counselRecord;

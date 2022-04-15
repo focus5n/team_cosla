@@ -20,42 +20,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
-@ResponseBody
-@CrossOrigin
 public class CounselingController {
 
     @Autowired
     CounselingRepository counselingRepository;
 
-    @Autowired
-    CounselCardRepository counselCardRepository;
-
-    @GetMapping("/counseling")
+    @GetMapping("/counseling/{counseleeId}")
     @ResponseBody
-    public List<Counseling> counselingList() {
-        List<Counseling> list = counselingRepository.findAll();
+    public List<Counseling> counselingList(@PathVariable("counseleeId") int counseleeId) {
+        List<Counseling> list = counselingRepository.findByCounseleeId(counseleeId);
         return list;
     }
-
-    @GetMapping("/aftercounsel/{name}")
-    @ResponseBody
-    public AfterCounselMapping afterCounsel(@PathVariable("name") String counselee) {
-        AfterCounselMapping afterCounselMapping = counselCardRepository.findByCounselee(counselee);
-        return afterCounselMapping;
-    }
-
-    @GetMapping("/aftercounselex")
-    @ResponseBody
-    public List<CounselCard> afterCounselEx() {
-        List<CounselCard> list = counselCardRepository.findAll();
-        return list;
-    }
-
-    @PostMapping("/aftercounselex/write")
-    public String writeCounselCard(@ModelAttribute CounselCard counselCard) {
-        counselCardRepository.save(counselCard);
-        return "aftercounselex/write";
-    }
-    
-
 }

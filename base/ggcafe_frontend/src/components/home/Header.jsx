@@ -174,7 +174,7 @@ function Header(props) {
             <NavLink to="/column">전문가 칼럼</NavLink>
           </li>
           <li>
-            <NavLink to="/counselling">상담 받기</NavLink>
+            <NavLink to="/counseling">상담 받기</NavLink>
           </li>
           <li>
             <NavLink to="/information">고객센터</NavLink>

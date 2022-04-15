@@ -21,7 +21,11 @@ import Calendar from "./components/matching/Calendar";
 // 전문가 칼럼
 import Column from "./components/column/Column";
 // 상담 받기
-import Counselling from "./components/counselling/Counselling";
+import Counseling from "./components/counseling/Counseling";
+// 상담 받은 이후 정리
+import AfterCounsel from "./components/counseling/AfterCounsel";
+// 상담 기록 하기 
+import WriteCounselCard from "./components/counseling/WriteCounselCard";
 // 고객 센터
 import Information from "./components/information/Information";
 // 로그인
@@ -48,7 +52,9 @@ function App() {
           <Route path="/matchingdetail" element={<MatchingDetail />} />
           <Route path="/schedule" element={<Calendar />} />
           <Route path="/column" element={<Column />} />
-          <Route path="/counselling" element={<Counselling />} />
+          <Route path="/counseling" element={<Counseling />} />
+          <Route path="/writecounselcard" element={<WriteCounselCard/>} />
+          <Route path="/aftercounsel" element={<AfterCounsel />} />
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
