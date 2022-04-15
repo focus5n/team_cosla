@@ -95,6 +95,7 @@ export default function WriteCounselCard() {
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
                                 setInputData([...inputData, newInputData]);
+                                
                                 resolve();
                             }, 1000)
                         }),
