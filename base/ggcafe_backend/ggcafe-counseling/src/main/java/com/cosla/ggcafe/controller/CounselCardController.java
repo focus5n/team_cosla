@@ -28,10 +28,13 @@ public class CounselCardController {
         return list;
     }
     
-    @PostMapping("/aftercounselex/write")
-    public String writeCounselCard(@ModelAttribute CounselCard counselCard) {
+    @PostMapping("/writecounselcard")
+    @ResponseBody
+    public String writeCounselCard(@ModelAttribute CounselCard counselCard ) {
+        System.out.println("출력" + counselCard);
         counselCardRepository.save(counselCard);
-        return "aftercounselex/write";
+        return "writecounselcard";
     }
+
 
 }

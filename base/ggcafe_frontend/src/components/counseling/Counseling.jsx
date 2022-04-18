@@ -20,10 +20,8 @@ export default function Counseling() {
 
   const [lastId, setLastId] = useState(0)
   const counseleeId = 1
-  
-  useEffect(async () => {
-    //const counseleeId = window.sessionStorage.getItem("counseleeId");
 
+  useEffect(async () => {
     await axios.get(`/counseling/${counseleeId}`).then(res => {
       const _inputData = res.data.map((rowData) => (
         // rowData 의 갯수만큼 증가

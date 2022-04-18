@@ -49,7 +49,7 @@ export default function WriteCounselCard() {
         { title: 'Counselee', field: 'counselee' },
         { title: 'Counseling Record', field: 'counselRecord' },
         { title: 'Counsel Data', field: 'counselData' },
-        { title: 'Date', field: 'date', type: 'date' },
+        { title: 'Date', field: 'date', type: 'datetime' },
     ]);
 
     const [inputData, setInputData] = useState([{
@@ -61,13 +61,14 @@ export default function WriteCounselCard() {
     }]);
 
     const [lastId, setLastId] = useState(0)
-    const counseleeId = 1
+    const counseleeId = 2
 
     useEffect(async () => {
         await axios.get(`/aftercounsel/${counseleeId}`).then(res => {
             console.log(res)
             const _inputData = res.data.map((rowData) => (
-                setLastId(lastId + 1), {
+                setLastId(lastId + 1), 
+                {
                     id: rowData.id,
                     counselor: rowData.counselor,
                     counselee: rowData.counselee,
@@ -76,15 +77,16 @@ export default function WriteCounselCard() {
                     date: rowData.date
                 })
             )
-            setInputData(inputData.concat(_inputData))
+            setInputData(_inputData)
         })
     }, [])
     //빈 종속성 집합은 []구성 요소가 마운트 될 때마다
-    //효과가 한 번만 실행되고 모든 다시 렌더링시 실행되지 않음을 의미합니다.
+    //효과가 한 번만 실행되고 다시 렌더링시 실행되지 않음을 의미합니다.
     //한마디로 반복되지 않음을 뜻함
 
     return (
         <ThemeProvider theme={theme}>
+            {console.log(inputData)}
             <MaterialTable
                 title="Counseling Card"
                 columns={columns}
@@ -93,9 +95,23 @@ export default function WriteCounselCard() {
                 editable={{
                     onRowAdd: newInputData =>
                         new Promise((resolve, reject) => {
-                            setTimeout(() => {
+                            setTimeout(() => { 
                                 setInputData([...inputData, newInputData]);
+                                axios.post('/writecounselcard', null, {params: 
                                 
+                                    {
+                                        counselor: newInputData.counselor,
+                                        counselee: newInputData.counselee,
+                                        counselData: newInputData.counselData,
+                                        counselRecord: newInputData.counselRecord,
+                                        date: newInputData.date,
+                                        counseleeId: '2',
+                                        counselorId: '2',
+                                    }
+                                
+                                }).then((res) => {
+                                    console.log(res, '성공');
+                                })
                                 resolve();
                             }, 1000)
                         }),

@@ -6,7 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import lombok.Data;
+
 
 @Entity
 @Data
@@ -19,5 +23,6 @@ public class CounselCard {
     int counseleeId;
     String counselRecord;
     String counselData;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     Date date;
 }
