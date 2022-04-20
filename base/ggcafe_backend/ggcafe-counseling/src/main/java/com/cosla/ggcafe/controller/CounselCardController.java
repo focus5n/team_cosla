@@ -21,20 +21,38 @@ public class CounselCardController {
     @Autowired
     CounselCardRepository counselCardRepository;
 
+    // Counsel Card Created
+    @PostMapping("/writecounselcard")
+    @ResponseBody
+    public String writeCounselCard(@ModelAttribute CounselCard counselCard) {
+        System.out.println("출력" + counselCard);
+        counselCardRepository.save(counselCard);
+        return "writecounselcard";
+    }
+
+    // Counsel Card Read
     @GetMapping("/aftercounsel/{counseleeId}")
     @ResponseBody
     public List<CounselCard> afterCounsel(@PathVariable("counseleeId") int counseleeId) {
         List<CounselCard> list = counselCardRepository.findByCounseleeId(counseleeId);
         return list;
     }
-    
-    @PostMapping("/writecounselcard")
+
+    // Counsel Card Update
+    @PostMapping("/updatecounselcard/{id}")
     @ResponseBody
-    public String writeCounselCard(@ModelAttribute CounselCard counselCard ) {
-        System.out.println("출력" + counselCard);
+    public String updateCounselCard(@ModelAttribute CounselCard counselCard, @PathVariable("id") long id) {
+        counselCard.setId(id);
         counselCardRepository.save(counselCard);
-        return "writecounselcard";
+        return "updatecounselcard";
     }
 
+    // Counsel Card Delete
+    @GetMapping("/deletecounselcard/{id}")
+    @ResponseBody
+    public String deleteCounselCard(@PathVariable("id") long id) {
+        counselCardRepository.deleteById(id);
+        return "deletecounselcard";
+    }
 
 }

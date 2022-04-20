@@ -98,7 +98,6 @@ export default function WriteCounselCard() {
                             setTimeout(() => { 
                                 setInputData([...inputData, newInputData]);
                                 axios.post('/writecounselcard', null, {params: 
-                                
                                     {
                                         counselor: newInputData.counselor,
                                         counselee: newInputData.counselee,
@@ -108,9 +107,8 @@ export default function WriteCounselCard() {
                                         counseleeId: '2',
                                         counselorId: '2',
                                     }
-                                
                                 }).then((res) => {
-                                    console.log(res, '성공');
+                                    console.log(res, 'Create Success');
                                 })
                                 resolve();
                             }, 1000)
@@ -118,11 +116,26 @@ export default function WriteCounselCard() {
                     onRowUpdate: (newInputData, oldInputData) =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
+                                
                                 const dataInputUpdate = [...inputData];
                                 const index = oldInputData.tableData.id;
-                                dataInputUpdate[index] = newInputData;
+                                //dataInputUpdate[index] = newInputData;
                                 setInputData([...dataInputUpdate]);
-
+                                console.log(newInputData);
+                                axios.post(`/updatecounselcard/${index}`, null, {params: 
+                                    {
+                                        counselor: newInputData.counselor,
+                                        counselee: newInputData.counselee,
+                                        counselData: newInputData.counselData,
+                                        counselRecord: newInputData.counselRecord,
+                                        date: newInputData.date,
+                                        counseleeId: '2',
+                                        counselorId: '2',
+                                    }
+                                }).then((res) => {
+                                    console.log(res, 'Update Success');
+                                    window.location = "/writecounselcard";
+                                })
                                 resolve();
                             }, 1000)
                         }),
@@ -131,8 +144,13 @@ export default function WriteCounselCard() {
                             setTimeout(() => {
                                 const dataDelete = [...inputData];
                                 const index = oldInputData.tableData.id;
-                                dataDelete.splice(index, 1);
                                 setInputData([...dataDelete]);
+                                axios.get(`/deletecounselcard/${index}`).then((res)=>{
+                                    console.log(res, 'Delete Success');
+                                    window.location = "/writecounselcard";
+                                })
+                                //dataDelete.splice(index, 1);
+                               
                                 resolve()
                             }, 1000)
                         }),
