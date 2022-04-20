@@ -2,23 +2,32 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Header & Footer
+// Section Components
+// main service
+// Home
+import Home from "./components/home/Home";
+// Header
 import Header from "./components/home/Header";
+// Footer
 import Footer from "./components/home/Footer";
 
-// Section Components
-// 메인 화면
-import Home from "./components/home/Home";
+// diary service
 // 공감 일기장
 import Diary from "./components/diary/Diary";
+
+// expert service
 // 전문가 목록
 import ExpertListService from "./services/expertService/ExpertListService";
 // 전문가 상세정보
 import ExpertDetailService from "./services/expertService/ExpertDetailService";
+
+// match service
 // 매칭
 import MatchService from "./services/matchService/MatchService";
 // 매칭 결과
 import Result from "./components/match/Result";
+
+// user service
 // 로그인
 import SignIn from "./components/auth/SignIn";
 // 회원가입

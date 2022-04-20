@@ -19,14 +19,13 @@ public class ExpertController {
   @Autowired
   ExpertRepository expertRepository;
 
-  // 전문가 목록 출력헐 때 사용
+  // 전문가 목록 출력할 때 사용
   @RequestMapping("/expert")
   public List<Expert> ExpertAll() {
     return expertRepository.findAll();
   }
 
   // 전문가 상세정보 출력할 때 사용
-
   @RequestMapping("/expert/{id}")
   public Optional<Expert> ExpertById(@PathVariable("id") long id) {
     return expertRepository.findById(id);

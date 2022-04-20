@@ -25,8 +25,9 @@ const ExpertListService = () => {
 
   return (
     <div>
+      {console.log(data)}
       {data.map((info) => {
-        return <ExpertList key={info.urlToImage} info={info} />;
+        return <ExpertList key={info.email} info={info} />;
       })}
     </div>
   );

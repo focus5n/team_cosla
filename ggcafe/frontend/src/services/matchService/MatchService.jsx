@@ -6,8 +6,8 @@ import Match from "../../components/match/Match";
 function MatchService(props) {
   const [data, setData] = useState(null);
   const { id } = useParams();
-  const [test, setTest] = useState("");
 
+  // 전문가 정보 불러오기
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(`http://localhost:8080/expert/${id}`);
@@ -20,7 +20,7 @@ function MatchService(props) {
     return null;
   }
 
-  return <Match key={data.urlToImage} info={data} setTest={setTest}></Match>;
+  return <Match key={data.urlToImage} info={data}></Match>;
 }
 
 export default MatchService;

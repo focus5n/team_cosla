@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const StyledMatch = styled.div`
   .container {
@@ -23,7 +24,7 @@ const StyledMatch = styled.div`
 `;
 
 function Match(props) {
-  // fields
+  //// Fields
   // url id
   const { id } = useParams();
 
@@ -42,7 +43,17 @@ function Match(props) {
   // date
   const [startDate, setStartDate] = useState(new Date());
 
-  // handlers
+  // Total data for POST
+  const matchData = [
+    id,
+    userName,
+    expertName,
+    selectedPurpose,
+    selectedMeans,
+    startDate,
+  ];
+
+  //// Handlers
   // select purpose EventHandler
   const handleSelect = (event) => {
     event.preventDefault();
@@ -62,7 +73,7 @@ function Match(props) {
     window.location.href = `/result/${id}`;
   };
 
-  // functions
+  //// Functions
   // select purpose function
   const PurposeOption = () => {
     return purposeList.map((item) => (
@@ -92,14 +103,17 @@ function Match(props) {
     ));
   };
 
+  // Post
   const PostData = () => {
     useEffect(() => {
-      const pull = async () => {
-        const pullData = await axios.post(`http://localhost:8082/match/${id}`);
+      const requestData = async () => {
+        await axios.post(`http://localhost:8082/match`, {
+          matchData,
+        });
       };
-    }
-    pull();
-  }, []);
+      requestData();
+    }, []);
+  };
 
   return (
     <StyledMatch>
