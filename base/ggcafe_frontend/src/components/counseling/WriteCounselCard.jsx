@@ -150,7 +150,6 @@ export default function WriteCounselCard() {
                                     window.location = "/writecounselcard";
                                 })
                                 //dataDelete.splice(index, 1);
-                               
                                 resolve()
                             }, 1000)
                         }),
