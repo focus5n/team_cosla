@@ -6,11 +6,8 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@material-table/core": "^4.3.39",
-<<<<<<< HEAD:ggcafe/frontend/package.json
-=======
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.9.1",
->>>>>>> 11d6b81ed2acbf5528a55e3b1d2d401dd07bb429:base/ggcafe_frontend/package.json
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.2",
     "@testing-library/jest-dom": "^5.16.4",
@@ -49,11 +46,7 @@
       "last 1 safari version"
     ]
   },
-<<<<<<< HEAD:ggcafe/frontend/package.json
   "devDependencies": {
     "prettier": "2.6.2"
   }
-=======
-  "proxy": "http://localhost:8080"
->>>>>>> 11d6b81ed2acbf5528a55e3b1d2d401dd07bb429:base/ggcafe_frontend/package.json
 }
