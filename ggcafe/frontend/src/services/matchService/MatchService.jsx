@@ -10,7 +10,7 @@ function MatchService(props) {
   // 전문가 정보 불러오기
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(`http://localhost:8080/expert/${id}`);
+      const response = await axios.get(`http://localhost:10002/expert/${id}`);
       setData(response.data);
     };
     fetch();
