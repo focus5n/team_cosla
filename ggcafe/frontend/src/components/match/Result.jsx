@@ -5,29 +5,44 @@ import styled from "styled-components";
 const StyledResult = styled.div`
   .container {
     display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid blanchedalmond;
+  }
+
+  .card .info {
   }
 `;
 
 // Parts
-const Picture = () => {
-  return <div className="picture">{urlToImage}</div>;
-};
 
-const Detail = () => {
+const Header = () => {
   return (
-    <div className="detail">
-      <div className="purpose">{matchPurpose}</div>
-      <div className="type">{matchType}</div>
+    <div className="header">
+      <div className="cafeName">공감 한 잔</div>
     </div>
   );
 };
 
-const Name = () => {
+const Info = () => {
   return (
-    <div className="name">
-      <div className="userName">{userName}</div>
-      <div className="expertName">{expertName}</div>
-    </div>
+    <>
+      <div className="name">
+        <div className="userName">{userName}</div>
+        <div className="expertName">{expertName}</div>
+      </div>
+      <div className="detail">
+        <div className="purpose">{matchPurpose}</div>
+        <div className="type">{matchType}</div>
+      </div>
+    </>
   );
 };
 
@@ -41,25 +56,16 @@ const Date = () => {
 
 // Function
 function Result(props) {
-  const {
-    urlToImage,
-    matchPurpose,
-    matchType,
-    userName,
-    expertName,
-    matchDate,
-  } = props.data;
+  const { matchPurpose, matchType, userName, expertName, matchDate } =
+    props.data;
 
   return (
     <StyledResult>
       <div className="container">
         <div className="card">
-          <div className="image">
-            <Picture />
-          </div>
-          <div className="info">
-            <Name />
-            <Detail />
+          <Header />
+          <div className="infoBox">
+            <Info />
             <Date />
           </div>
         </div>
