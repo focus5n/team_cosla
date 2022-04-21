@@ -30,34 +30,26 @@ function Match(props) {
 
   // user, expert
   const userName = window.sessionStorage.getItem("name");
-  const { name: expertName } = props.info;
+  const { name: expertName, email: expertEmail } = props.info;
 
   // select purpose
   const purposeList = ["취업상담", "학업상담", "진로상담"];
-  const [selectedPurpose, setSelectedPurpose] = useState("");
+  const [matchPurpose, setSelectedPurpose] = useState("취업상담");
 
   // select means
   const meansList = ["화상상담", "채팅상담"];
-  const [selectedMeans, setSelectedMeans] = useState("");
+  const [matchType, setSelectedMeans] = useState("화상상담");
 
   // date
-  const [startDate, setStartDate] = useState(new Date());
-
-  // Total data for POST
-  const matchData = [
-    id,
-    userName,
-    expertName,
-    selectedPurpose,
-    selectedMeans,
-    startDate,
-  ];
+  const [matchDate, setMatchDate] = useState(new Date());
 
   //// Handlers
   // select purpose EventHandler
   const handleSelect = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
+    console.log(matchPurpose);
     setSelectedPurpose(event.target.value);
+    console.log(matchPurpose);
   };
 
   // select means EventHandler
@@ -68,9 +60,22 @@ function Match(props) {
 
   // submit EventHandler
   const handleSubmit = (event) => {
+    axios
+      .post(`http://localhost:10003/match`, {
+        id,
+        // userName,
+        // userEmail,
+        expertName,
+        expertEmail,
+        matchPurpose,
+        matchType,
+        matchDate,
+      })
+      .then((res) => {
+        console.log(res);
+      });
     event.preventDefault();
-    <PostData />;
-    window.location.href = `/result/${id}`;
+    // window.location.href = `/result/${id}`;
   };
 
   //// Functions
@@ -87,8 +92,8 @@ function Match(props) {
   const Calendar = () => {
     return (
       <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={matchDate}
+        onChange={(date) => setMatchDate(date)}
         minDate={new Date()}
       />
     );
@@ -101,18 +106,6 @@ function Match(props) {
         {item}
       </option>
     ));
-  };
-
-  // Post
-  const PostData = () => {
-    useEffect(() => {
-      const requestData = async () => {
-        await axios.post(`http://localhost:10003/match`, {
-          matchData,
-        });
-      };
-      requestData();
-    }, []);
   };
 
   return (
@@ -129,7 +122,7 @@ function Match(props) {
           </div>
           <div className="purpose">
             <div className="title">상담목적</div>
-            <select onChange={handleSelect} value={selectedPurpose}>
+            <select onChange={handleSelect} value={matchPurpose}>
               <PurposeOption />
             </select>
           </div>
@@ -139,7 +132,7 @@ function Match(props) {
           </div>
           <div className="means">
             <div className="title">상담방식</div>
-            <select onChange={handleMeans} value={selectedMeans}>
+            <select onChange={handleMeans} value={matchType}>
               <MeansOption />
             </select>
           </div>
