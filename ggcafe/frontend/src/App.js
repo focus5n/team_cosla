@@ -27,6 +27,14 @@ import MatchService from "./services/matchService/MatchService";
 // 매칭 결과
 import Result from "./components/match/Result";
 
+// counsel service
+// 상담 받기
+import Counseling from "./components/counseling/Counseling";
+// 상담 받은 이후 정리
+import AfterCounsel from "./components/counseling/AfterCounsel";
+// 상담 기록 하기
+import WriteCounselCard from "./components/counseling/WriteCounselCard";
+
 // user service
 // 로그인
 import SignIn from "./components/auth/SignIn";
@@ -34,6 +42,8 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 // 로그인 콜백
 import Login from "./components/auth/Login";
+// 로그아웃
+import SignOut from "./components/auth/SignOut";
 
 // CSS
 import "./App.css";
@@ -54,10 +64,15 @@ function App() {
           {/* 매치 */}
           <Route path="match/:id" element={<MatchService />} />
           <Route path="result/:id" element={<Result />} />
+          {/* 상담 */}
+          <Route path="/counseling" element={<Counseling />} />
+          <Route path="/writecounselcard" element={<WriteCounselCard />} />
+          <Route path="/aftercounsel" element={<AfterCounsel />} />
           {/* 로그인 */}
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="callback/kakao" element={<Login />}></Route>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signout" element={<SignOut />} />
+          <Route path="/callback/kakao" element={<Login />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
