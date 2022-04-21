@@ -153,7 +153,6 @@ export default function WriteCounselCard() {
                                 resolve()
                             }, 1000)
                         }),
-
                 }}
             />
         </ThemeProvider>
