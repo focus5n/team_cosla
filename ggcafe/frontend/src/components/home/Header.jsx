@@ -157,7 +157,7 @@ function Header(props) {
         {/* Navigation Menu */}
         <ul className="Header-menu">
           <li>
-            <NavLink to="/diary">공감 일기장</NavLink>
+            <NavLink to="/diaryList">공감 일기장</NavLink>
           </li>
           <li>
             <NavLink to="/expert">전문가 찾기</NavLink>

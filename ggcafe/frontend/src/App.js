@@ -14,6 +14,8 @@ import Footer from "./components/home/Footer";
 // diary service
 // 공감 일기장
 import Diary from "./components/diary/Diary";
+import DiaryList from "./components/diary/DiaryList";
+import DiaryDetail from "./components/diary/DiaryDetail";
 
 // expert service
 // 전문가 목록
@@ -58,6 +60,8 @@ function App() {
           <Route index path="" element={<Home />} />
           {/* 일기장 */}
           <Route path="diary" element={<Diary />} />
+          <Route path="diarylist" element={<DiaryList />} />
+          <Route path="diarydetail" element={<DiaryDetail />} />
           {/* 전문가 */}
           <Route path="expert" element={<ExpertListService />} />
           <Route path="detail/:id" element={<ExpertDetailService />} />
