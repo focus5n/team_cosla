@@ -13,7 +13,7 @@ const ExpertDetailService = () => {
     const fetchData = async () => {
       setLoading(true);
       console.log(id);
-      const response = await axios.get(`http://localhost:8080/expert/${id}`);
+      const response = await axios.get(`http://localhost:10002/expert/${id}`);
       setData(response.data);
       console.log(data);
       setLoading(false);

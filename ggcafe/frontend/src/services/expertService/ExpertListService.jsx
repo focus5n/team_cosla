@@ -9,7 +9,7 @@ const ExpertListService = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const response = await axios.get("http://localhost:8080/expert");
+      const response = await axios.get("http://localhost:10002/expert");
       setData(response.data);
       setLoading(false);
     };
