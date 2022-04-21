@@ -7,15 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.Data;
-
 
 @Entity
 @Data
 public class CounselCard {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     Long id;
     String counselor;
     int counselorId;
