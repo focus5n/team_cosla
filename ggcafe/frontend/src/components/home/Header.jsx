@@ -163,7 +163,23 @@ function Header(props) {
             <NavLink to="/expert">전문가 찾기</NavLink>
           </li>
           <li>
+<<<<<<< HEAD:ggcafe/frontend/src/components/home/Header.jsx
             <NavLink to="/counselling/">상담 받기</NavLink>
+=======
+            <NavLink to="/matchingdetail">전문가 상세정보</NavLink>
+          </li>
+          <li>
+            <NavLink to="/schedule">상담 일정 정하기</NavLink>
+          </li>
+          <li>
+            <NavLink to="/column">전문가 칼럼</NavLink>
+          </li>
+          <li>
+            <NavLink to="/counseling">상담 받기</NavLink>
+          </li>
+          <li>
+            <NavLink to="/information">고객센터</NavLink>
+>>>>>>> 11d6b81ed2acbf5528a55e3b1d2d401dd07bb429:base/ggcafe_frontend/src/components/home/Header.jsx
           </li>
           <li>
             <NavLink to="/signup">회원가입</NavLink>
