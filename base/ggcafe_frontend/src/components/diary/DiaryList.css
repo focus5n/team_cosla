@@ -1,4 +1,4 @@
-.Diary {
+.DiaryList {
     text-align: center;
 }
 
@@ -11,7 +11,7 @@
     margin-bottom: 50px;
 }
 
-.form-wrapper {
+.React.Fragment {
     width: 60%;
     margin: 0 auto;
 }
@@ -27,13 +27,17 @@
     min-height: 500px;
 }
 
+.text-link {
+    text-decoration: none;
+}
+
 .submit-button {
-    width: 100px;
-    height: 60px;
+    width: 200px;
+    height: 50px;
     font-size: 20px;
     padding: 20px;
     border: none;
-    background: rgb(255, 253, 253);
+    background: indianred;
     border-radius: 5px;
     margin-top: 40px;
     vertical-align: middle;

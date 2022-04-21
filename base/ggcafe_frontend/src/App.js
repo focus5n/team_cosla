@@ -11,6 +11,8 @@ import Footer from "./components/home/Footer";
 import Home from "./components/home/Home";
 // 공감 일기장
 import Diary from "./components/diary/Diary";
+import DiaryList from "./components/diary/DiaryList";
+import DiaryDetail from "./components/diary/DiaryDetail";
 // 전문가 목록
 import ExpertListService from "./services/expertService/ExpertListService";
 // 전문가 상세정보
@@ -39,6 +41,8 @@ function App() {
         <Routes path="/">
           <Route index path="" element={<Home />} />
           <Route path="diary" element={<Diary />} />
+          <Route path="diarylist" element={<DiaryList />}></Route>
+          <Route path="diarydetail" element={<DiaryDetail />}></Route>
           <Route path="column" element={<Column />} />
           <Route path="expert" element={<ExpertListService />} />
           <Route path="detail/:id" element={<ExpertDetailService />} />
@@ -47,6 +51,7 @@ function App() {
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="callback/kakao" element={<Login />}></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>

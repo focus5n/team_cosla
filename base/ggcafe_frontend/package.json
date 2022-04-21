@@ -6,6 +6,7 @@
     "@ckeditor/ckeditor5-build-decoupled-document": "^34.0.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@material-table/core": "^4.3.39",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.2",
     "@testing-library/jest-dom": "^5.16.3",
@@ -53,5 +54,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8081"
+  "proxy": "http://localhost:8080"
 }
