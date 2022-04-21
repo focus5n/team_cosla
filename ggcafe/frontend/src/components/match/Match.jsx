@@ -30,6 +30,7 @@ function Match(props) {
 
   // user, expert
   const userName = window.sessionStorage.getItem("name");
+  const userEmail = window.sessionStorage.getItem("email");
   const { name: expertName, email: expertEmail } = props.info;
 
   // select purpose
@@ -63,8 +64,8 @@ function Match(props) {
     axios
       .post(`http://localhost:10003/match`, {
         id,
-        // userName,
-        // userEmail,
+        userName,
+        userEmail,
         expertName,
         expertEmail,
         matchPurpose,
