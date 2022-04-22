@@ -31,33 +31,28 @@ const Header = () => {
   );
 };
 
-const Info = () => {
+const Info = (props) => {
   return (
     <>
       <div className="name">
-        <div className="userName">{userName}</div>
-        <div className="expertName">{expertName}</div>
+        <div className="userName">{props.userName}</div>
+        <div className="expertName">{props.expertName}</div>
       </div>
       <div className="detail">
-        <div className="purpose">{matchPurpose}</div>
-        <div className="type">{matchType}</div>
+        <div className="purpose">{props.matchPurpose}</div>
+        <div className="type">{props.matchType}</div>
+      </div>
+      <div className="date">
+        <div className="matchDate">{props.matchDate}</div>
       </div>
     </>
-  );
-};
-
-const Date = () => {
-  return (
-    <div className="date">
-      <div className="matchDate">{matchDate}</div>
-    </div>
   );
 };
 
 // Function
 function Result(props) {
   const { matchPurpose, matchType, userName, expertName, matchDate } =
-    props.data;
+    props.Info;
 
   return (
     <StyledResult>
@@ -65,8 +60,7 @@ function Result(props) {
         <div className="card">
           <Header />
           <div className="infoBox">
-            <Info />
-            <Date />
+            <Info props={props.info} />
           </div>
         </div>
       </div>

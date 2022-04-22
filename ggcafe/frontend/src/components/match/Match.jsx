@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -76,7 +76,8 @@ function Match(props) {
         console.log(res);
       });
     event.preventDefault();
-    // window.location.href = `/result/${id}`;
+    alert("상담 신청이 완료됐습니다.");
+    window.location.href = `/`;
   };
 
   //// Functions

@@ -5,7 +5,6 @@ import com.cosla.ggcafe.model.Match;
 import com.cosla.ggcafe.repository.MatchRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +21,11 @@ public class MatchService {
   }
 
   // get match by id
-  public ResponseEntity<Match> getMatchById(@PathVariable Long matchId) {
-    Match match = matchRepository.findById(matchId)
-        .orElseThrow(() -> new ResourceNotFoundException("Match not exist with id: " + matchId));
+  public Match getMatchById(@PathVariable Long id) {
+    Match match = matchRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Match not exist with id: " + id));
 
-    return ResponseEntity.ok(match);
+    return match;
   }
 
 }

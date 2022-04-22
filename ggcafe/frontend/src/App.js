@@ -27,7 +27,7 @@ import ExpertDetailService from "./services/expertService/ExpertDetailService";
 // 매칭
 import MatchService from "./services/matchService/MatchService";
 // 매칭 결과
-import Result from "./components/match/Result";
+import ResultService from "./services/matchService/ResultService";
 
 // counsel service
 // 상담 받기
@@ -67,7 +67,7 @@ function App() {
           <Route path="detail/:id" element={<ExpertDetailService />} />
           {/* 매치 */}
           <Route path="match/:id" element={<MatchService />} />
-          <Route path="result/:id" element={<Result />} />
+          <Route path="result/:id" element={<ResultService />} />
           {/* 상담 */}
           <Route path="/counseling" element={<Counseling />} />
           <Route path="/writecounselcard" element={<WriteCounselCard />} />
