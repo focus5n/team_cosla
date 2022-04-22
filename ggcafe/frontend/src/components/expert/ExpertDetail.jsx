@@ -121,6 +121,7 @@ const ExpertDetail = (info) => {
 
   const handleClickToMatch = (event) => {
     event.preventDefault();
+    window.sessionStorage.setItem("expertId", id);
     window.location.href = `/match/${id}`;
   };
 
