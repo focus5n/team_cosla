@@ -67,15 +67,9 @@ function App() {
           <Route path="match/:id" element={<MatchService />} />
           {/* 상담 */}
           <Route path="/counseling" element={<Counseling />} />
-<<<<<<< HEAD:ggcafe/frontend/src/App.js
           <Route path="/writecounselcard" element={<WriteCounselCard />} />
-          <Route path="/aftercounsel" element={<AfterCounsel />} />
-          {/* 로그인 */}
-=======
-          <Route path="/writecounselcard" element={<WriteCounselCard/>} />
           <Route path="/counseling/aftercounsel" element={<AfterCounsel />} />
           <Route path="/information" element={<Information />} />
->>>>>>> 874f0938639050a098f86bfe24cb93e2344069ca:base/ggcafe_frontend/src/App.js
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
