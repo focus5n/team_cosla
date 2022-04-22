@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.cosla.ggcafe.model.CounselCard;
 import com.cosla.ggcafe.repository.CounselCardRepository;
-import com.cosla.ggcafe.repository.mapping.AfterCounselMapping;
-import com.cosla.ggcafe.model.Counseling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,7 @@ public class CounselCardController {
     }
 
     // Counsel Card Read
-    @GetMapping("/aftercounsel/{counseleeId}")
+    @GetMapping("/counseling/aftercounsel/{counseleeId}")
     @ResponseBody
     public List<CounselCard> afterCounsel(@PathVariable("counseleeId") int counseleeId) {
         List<CounselCard> list = counselCardRepository.findByCounseleeId(counseleeId);

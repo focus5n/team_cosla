@@ -74,7 +74,8 @@ const SignUp = () => {
         {name: postData.name,
           email: postData.email,
         password: postData.password,
-        }})
+        }
+      })
       .then(function (response) {
         
         console.log(response, '성공');

@@ -54,7 +54,7 @@ function App() {
           <Route path="/column" element={<Column />} />
           <Route path="/counseling" element={<Counseling />} />
           <Route path="/writecounselcard" element={<WriteCounselCard/>} />
-          <Route path="/aftercounsel" element={<AfterCounsel />} />
+          <Route path="/counseling/aftercounsel" element={<AfterCounsel />} />
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, forwardRef } from "react";
+import React, { useEffect, useState, forwardRef, Fragment } from "react";
 import MaterialTable from '@material-table/core';
 import { ThemeProvider } from "@material-ui/core/styles";
 import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
@@ -19,6 +19,8 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from "axios";
+import AWS from 'aws-sdk';
+import { Row, Col, Button, Input, Alert } from 'reactstrap';
 
 const theme = unstable_createMuiStrictModeTheme();
 
@@ -44,6 +46,10 @@ const tableIcons = {
 
 export default function WriteCounselCard() {
 
+    const [progress, setProgress] = useState(0);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [showAlert, setShowAlert] = useState(false);
+
     const [columns, setColumns] = useState([
         { title: 'Counselor', field: 'counselor' },
         { title: 'Counselee', field: 'counselee' },
@@ -63,11 +69,64 @@ export default function WriteCounselCard() {
     const [lastId, setLastId] = useState(0)
     const counseleeId = 2
 
+    const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
+    const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY;
+    const REGION = process.env.REACT_APP_REGION;
+    const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+
+    AWS.config.update({
+        accessKeyId: ACCESS_KEY,
+        secretAccessKey: SECRET_ACCESS_KEY
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+    });
+
+    const handleFileInput = (e) => {
+        const file = e.target.files[0];
+        const fileExt = file.name.split('.').pop();
+        if (file.type !== 'image/jpeg' || fileExt !== 'jpg') {
+            alert('jpg 파일만 Upload 가능합니다.');
+            return;
+        }
+        setProgress(0);
+        setSelectedFile(e.target.files[0]);
+    }
+
+    const uploadFile = (file) => {
+        const params = {
+            ACL: 'public-read',
+            Body: file,
+            Bucket: S3_BUCKET,
+            Key: "upload/" + file.name
+        };
+
+        myBucket.putObject(params)
+            .on('httpUploadProgress', (evt) => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100))
+                setShowAlert(true);
+                setTimeout(() => {
+                    setShowAlert(false);
+                    setSelectedFile(null);
+                }, 3000)
+                console.log(myBucket)
+            })
+            .send((err) => {
+                if (err) {
+                    console.log(err);
+                    console.log(ACCESS_KEY);
+                }
+            })
+    }
+
     useEffect(async () => {
+
         await axios.get(`/aftercounsel/${counseleeId}`).then(res => {
             console.log(res)
             const _inputData = res.data.map((rowData) => (
-                setLastId(lastId + 1), 
+                setLastId(lastId + 1),
                 {
                     id: rowData.id,
                     counselor: rowData.counselor,
@@ -95,9 +154,10 @@ export default function WriteCounselCard() {
                 editable={{
                     onRowAdd: newInputData =>
                         new Promise((resolve, reject) => {
-                            setTimeout(() => { 
+                            setTimeout(() => {
                                 setInputData([...inputData, newInputData]);
-                                axios.post('/writecounselcard', null, {params: 
+                                axios.post('/writecounselcard', null, {
+                                    params:
                                     {
                                         counselor: newInputData.counselor,
                                         counselee: newInputData.counselee,
@@ -116,13 +176,14 @@ export default function WriteCounselCard() {
                     onRowUpdate: (newInputData, oldInputData) =>
                         new Promise((resolve, reject) => {
                             setTimeout(() => {
-                                
+
                                 const dataInputUpdate = [...inputData];
                                 const index = oldInputData.tableData.id;
                                 //dataInputUpdate[index] = newInputData;
                                 setInputData([...dataInputUpdate]);
                                 console.log(newInputData);
-                                axios.post(`/updatecounselcard/${index}`, null, {params: 
+                                axios.post(`/updatecounselcard/${index}`, null, {
+                                    params:
                                     {
                                         counselor: newInputData.counselor,
                                         counselee: newInputData.counselee,
@@ -145,7 +206,7 @@ export default function WriteCounselCard() {
                                 const dataDelete = [...inputData];
                                 const index = oldInputData.tableData.id;
                                 setInputData([...dataDelete]);
-                                axios.get(`/deletecounselcard/${index}`).then((res)=>{
+                                axios.get(`/deletecounselcard/${index}`).then((res) => {
                                     console.log(res, 'Delete Success');
                                     window.location = "/writecounselcard";
                                 })
@@ -154,6 +215,40 @@ export default function WriteCounselCard() {
                             }, 1000)
                         }),
                 }}
+                detailPanel={rowData => {
+                    return (
+                        <Fragment>
+                            <div className="App">
+                                <div className="App-header">
+                                    <Row>
+                                        <Col><h1>File Upload</h1></Col>
+                                    </Row>
+                                </div>
+                                <div className="App-body">
+                                    <Row>
+                                        <Col>
+                                            {showAlert ?
+                                                <Alert color="primary">업로드 진행률 : {progress}%</Alert>
+                                                :
+                                                <Alert color="primary">파일을 선택해 주세요.</Alert>
+                                            }
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Input color="primary" type="file" onChange={handleFileInput} />
+                                            {selectedFile ? (
+                                                <Button color="primary" onClick={() => uploadFile(selectedFile)}> Upload to S3</Button>
+                                            ) : null}
+
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </div>
+                        </Fragment>
+                    )
+                }}
+                onRowClick={(event, rowData, togglePanel) => togglePanel()}
             />
         </ThemeProvider>
     )
