@@ -44,6 +44,7 @@ public class UserController {
         return userService.getProfile(oAuthToken, userRepository);
     }
 
+    //회원가입
     @PostMapping("/signup")
     @ResponseBody
     public User signUp(@ModelAttribute User user) {
