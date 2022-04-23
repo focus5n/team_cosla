@@ -36,7 +36,8 @@ import SignUp from "./components/auth/SignUp";
 import Login from "./components/auth/Login"
 // 로그아웃
 import SignOut from "./components/auth/SignOut";
-
+// 콜백
+import Back from "./components/counseling/Back"
 // CSS
 import "./App.css";
 
@@ -54,12 +55,13 @@ function App() {
           <Route path="/column" element={<Column />} />
           <Route path="/counseling" element={<Counseling />} />
           <Route path="/writecounselcard" element={<WriteCounselCard/>} />
-          <Route path="/counseling/aftercounsel" element={<AfterCounsel />} />
+          <Route path="/aftercounsel" element={<AfterCounsel />} />
           <Route path="/information" element={<Information />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/callback/kakao" element={<Login/>}></Route>
+          <Route path="/back" element={<Back/>}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

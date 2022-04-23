@@ -58,11 +58,14 @@ export default function SignIn() {
     const postData = { email, password };
     console.log(postData);
     await axios
-      .post('/signin', null, { params:
-        {name: postData.name,
+      .post('/signin', null, {
+        params:
+        {
+          name: postData.name,
           email: postData.email,
-        password: postData.password,
-        }})
+          password: postData.password,
+        }
+      })
       .then(function (response) {
         let name, email;
         name = response.data.name;
@@ -72,7 +75,7 @@ export default function SignIn() {
         console.log(response, '성공');
         window.location = '/';
         navigate('/');
-        
+
       })
       .catch(function (err) {
         console.log(err);
@@ -83,7 +86,7 @@ export default function SignIn() {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
-     const joinData = {
+    const joinData = {
       email: data.get("email"),
       password: data.get("password"),
     };
@@ -144,15 +147,28 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <div><a href={KAKAO_AUTH_URL}><img src={KakaoLogin}></img></a></div>
-            <Button 
+            <Box sx={{
+            marginTop: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+            >
+            <Link href={KAKAO_AUTH_URL}>
+            <Box
+              component="img"
+              src={KakaoLogin}
+            />
+            </Link>
+            <Button
               type="submit"
-              size="kakaosize"
+              fullWidth
               variant="contained"
-              sx={{ mt: 0, mb: 3 }}
+              sx={{ mt: 2, mb: 3 }}
             >
               Sign In
             </Button>
+            </Box>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

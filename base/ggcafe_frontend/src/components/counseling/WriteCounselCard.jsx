@@ -1,4 +1,4 @@
-import React, { useEffect, useState, forwardRef, Fragment } from "react";
+import React, { useEffect, useState, forwardRef, Fragment, useCallback } from "react";
 import MaterialTable from '@material-table/core';
 import { ThemeProvider } from "@material-ui/core/styles";
 import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
@@ -21,8 +21,10 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from "axios";
 import AWS from 'aws-sdk';
 import { Row, Col, Button, Input, Alert } from 'reactstrap';
+import { useNavigate } from "react-router-dom";
 
 const theme = unstable_createMuiStrictModeTheme();
+
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -67,6 +69,9 @@ export default function WriteCounselCard() {
     }]);
 
     const [lastId, setLastId] = useState(0)
+
+    const navigate = useNavigate();
+
     const counseleeId = 2
 
     const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
@@ -122,7 +127,6 @@ export default function WriteCounselCard() {
     }
 
     useEffect(async () => {
-
         await axios.get(`/aftercounsel/${counseleeId}`).then(res => {
             console.log(res)
             const _inputData = res.data.map((rowData) => (
@@ -169,6 +173,7 @@ export default function WriteCounselCard() {
                                     }
                                 }).then((res) => {
                                     console.log(res, 'Create Success');
+                                    navigate("/back");
                                 })
                                 resolve();
                             }, 1000)
@@ -179,6 +184,7 @@ export default function WriteCounselCard() {
 
                                 const dataInputUpdate = [...inputData];
                                 const index = oldInputData.tableData.id;
+                                
                                 //dataInputUpdate[index] = newInputData;
                                 setInputData([...dataInputUpdate]);
                                 console.log(newInputData);
@@ -195,7 +201,7 @@ export default function WriteCounselCard() {
                                     }
                                 }).then((res) => {
                                     console.log(res, 'Update Success');
-                                    window.location = "/writecounselcard";
+                                    navigate("/back");
                                 })
                                 resolve();
                             }, 1000)
@@ -208,7 +214,7 @@ export default function WriteCounselCard() {
                                 setInputData([...dataDelete]);
                                 axios.get(`/deletecounselcard/${index}`).then((res) => {
                                     console.log(res, 'Delete Success');
-                                    window.location = "/writecounselcard";
+                                    navigate("/back");
                                 })
                                 //dataDelete.splice(index, 1);
                                 resolve()

@@ -182,7 +182,6 @@ const SignUp = () => {
                   />
                 </Grid>
               </Grid>
-              
               <Button
                 type="submit"
                 fullWidth

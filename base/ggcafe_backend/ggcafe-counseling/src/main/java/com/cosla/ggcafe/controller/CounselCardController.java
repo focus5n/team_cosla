@@ -29,7 +29,7 @@ public class CounselCardController {
     }
 
     // Counsel Card Read
-    @GetMapping("/counseling/aftercounsel/{counseleeId}")
+    @GetMapping("/aftercounsel/{counseleeId}")
     @ResponseBody
     public List<CounselCard> afterCounsel(@PathVariable("counseleeId") int counseleeId) {
         List<CounselCard> list = counselCardRepository.findByCounseleeId(counseleeId);

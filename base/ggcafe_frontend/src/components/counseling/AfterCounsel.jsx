@@ -24,7 +24,7 @@ export default function AfterCounsel() {
     useEffect(async () => {
         //const counseleeId = window.sessionStorage.getItem("counseleeId");
 
-        await axios.get(`/counseling/aftercounsel/${counseleeId}`).then(res => {
+        await axios.get(`/aftercounsel/${counseleeId}`).then(res => {
             console.log(res)
             const _inputData = res.data.map((rowData) => (
                 // rowData 의 갯수만큼 증가

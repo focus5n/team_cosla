@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Link from '@mui/material/Link';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Counseling() {
 
@@ -63,18 +64,13 @@ export default function Counseling() {
               <TableCell>{row.purpose}</TableCell>
               <TableCell>{row.date}</TableCell>
               <TableCell>
-                <Link href={`/aftercounsel`}>
+                <Link to={`/aftercounsel`}>
                   Counseling Start
                 </Link></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      {/* 
-       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link>
-      */}
     </React.Fragment>
   );
 }

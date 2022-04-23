@@ -165,16 +165,13 @@ function Header(props) {
             <NavLink to="/matchinglist">전문가 찾기</NavLink>
           </li>
           <li>
-            <NavLink to="/matchingdetail">전문가 상세정보</NavLink>
-          </li>
-          <li>
-            <NavLink to="/schedule">상담 일정 정하기</NavLink>
-          </li>
-          <li>
             <NavLink to="/column">전문가 칼럼</NavLink>
           </li>
           <li>
             <NavLink to="/counseling">상담 받기</NavLink>
+          </li>
+          <li>
+            <NavLink to="/writecounselcard">상담일지 작성</NavLink>
           </li>
           <li>
             <NavLink to="/information">고객센터</NavLink>
