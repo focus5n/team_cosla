@@ -73,13 +73,8 @@ const SignUp = () => {
         params: {
           name: postData.name,
           email: postData.email,
-<<<<<<< HEAD:ggcafe/frontend/src/components/auth/SignUp.jsx
           password: postData.password,
         },
-=======
-        password: postData.password,
-        }
->>>>>>> 874f0938639050a098f86bfe24cb93e2344069ca:base/ggcafe_frontend/src/components/auth/SignUp.jsx
       })
       .then(function (response) {
         console.log(response, "성공");
